@@ -46,7 +46,7 @@ class mydrawer extends StatelessWidget {
               color: Colors.white,
             ),
             title: Text(
-              "Eamil",
+              "Email",
               textScaleFactor: 1.2,
               style: TextStyle(color: Colors.white),
             ))
