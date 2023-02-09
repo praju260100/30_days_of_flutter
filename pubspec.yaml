@@ -65,6 +65,9 @@ flutter:
   assets:
     - assets/images/login.png
     - assets/images/hruta.jpeg
+    - assets/images/iphone12pro.jpeg
+    - assets/files/
+   
 
   #   - images/a_dot_ham.jpeg
 
