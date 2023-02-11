@@ -1,70 +1,77 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/widget/themes.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class cartpage extends StatelessWidget {
-  const cartpage({super.key});
-
+class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyTheme.creamColor,
-        appBar: AppBar(
-            backgroundColor: Colors.transparent, title: "cart".text.make()),
-        body: Column(
-          children: [cartlist().p32().expand(), Divider(), cardtotal()],
-        ));
-  }
-}
-
-class cardtotal extends StatelessWidget {
-  const cardtotal({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      backgroundColor: context.canvasColor,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: "Cart".text.make(),
+      ),
+      body: Column(
         children: [
-          "\$9999".text.xl5.color(context.theme.accentColor).make(),
-          30.widthBox,
-          ElevatedButton(
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: "Buying not supported yet".text.make()));
-                  },
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(context.theme.buttonColor)),
-                  child: "Buy".text.white.make())
-              .w32(context),
+          _CartList().p32().expand(),
+          Divider(),
+          _CartTotal(),
         ],
       ),
     );
   }
 }
 
-class cartlist extends StatefulWidget {
-  const cartlist({super.key});
-
+class _CartTotal extends StatelessWidget {
   @override
-  State<cartlist> createState() => _cartlistState();
+  Widget build(BuildContext context) {
+    final _cart = CartModel();
+    return SizedBox(
+      height: 200,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          "\$${_cart.totalPrice}"
+              .text
+              .xl5
+              .color(context.theme.accentColor)
+              .make(),
+          30.widthBox,
+          ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: "Buying not supported yet.".text.make(),
+              ));
+            },
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(context.theme.buttonColor)),
+            child: "Buy".text.white.make(),
+          ).w32(context)
+        ],
+      ),
+    );
+  }
 }
 
-class _cartlistState extends State<cartlist> {
+class _CartList extends StatefulWidget {
+  @override
+  __CartListState createState() => __CartListState();
+}
+
+class __CartListState extends State<_CartList> {
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 5,
+      itemCount: _cart.items.length,
       itemBuilder: (context, index) => ListTile(
         leading: Icon(Icons.done),
         trailing: IconButton(
           icon: Icon(Icons.remove_circle_outline),
           onPressed: () {},
         ),
-        title: "Item1".text.make(),
+        title: _cart.items[index].name.text.make(),
       ),
     );
   }

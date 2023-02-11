@@ -1,36 +1,42 @@
 import 'package:flutter_catalog/models/catalog.dart';
 
 class CartModel {
-  // catalog field
-  //CatalogModel _catalog;
+  static final cartModel = CartModel._internal();
+  CartModel._internal();
 
-  // Collection of IDs - store Ids of each item
+  factory CartModel() => cartModel;
+
+  CatalogModel _catalog;
+
   final List<int> _itemIds = [];
 
-  // Get Catalog
-  CatalogModel get catalog => catalog;
+  CatalogModel get catalog => _catalog;
 
   set catalog(CatalogModel newCatalog) {
     assert(newCatalog != null);
-    catalog = newCatalog;
+    _catalog = newCatalog;
   }
 
-  // Get items in the cart
-  List<Item> get items => _itemIds.map((id) => catalog.getById(id)).toList();
+  List<Item> get items => _itemIds.map((id) => _catalog.getById(id)).toList();
 
-  // Get total price
   num get totalPrice =>
       items.fold(0, (total, current) => total + current.price);
-
-  // Add Item
 
   void add(Item item) {
     _itemIds.add(item.id);
   }
 
-  // Remove Item
-
   void remove(Item item) {
     _itemIds.remove(item.id);
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is CartModel && other._catalog == _catalog;
+  }
+
+  @override
+  int get hashCode => _catalog.hashCode;
 }
