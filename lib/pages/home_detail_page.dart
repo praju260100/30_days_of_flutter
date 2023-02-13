@@ -20,7 +20,7 @@ class homedetailpage extends StatelessWidget {
         ),
         backgroundColor: MyTheme.creamColor,
         bottomNavigationBar: Container(
-          color: Colors.white,
+          color: context.cardColor,
           child: ButtonBar(
             alignment: MainAxisAlignment.spaceBetween,
             buttonPadding: EdgeInsets.zero,
@@ -45,15 +45,16 @@ class homedetailpage extends StatelessWidget {
                       arcType: VxArcType.CONVEY,
                       edge: VxEdge.TOP,
                       child: Container(
-                          color: Colors.white,
+                          color: context.cardColor,
                           width: context.screenWidth,
                           child: Column(children: [
                             catalog.name.text.xl4
                                 .color(MyTheme.darkBluishColor)
                                 .bold
                                 .make(),
-                            catalog.desc.text.xl
+                            catalog.desc.text
                                 .textStyle(context.captionStyle)
+                                .xl
                                 .make(),
                             10.heightBox,
                             "Et cum quas nisi exercitationem illum vel. Reprehenderit ea maxime nam. Fugit nisi laborum aliquid cupiditate unde voluptas. Modi et velit est rerum non. Placeat blanditiis itaque. Aut iusto odit optio quia ab est deleniti sed."
@@ -63,4 +64,6 @@ class homedetailpage extends StatelessWidget {
                           ])).py64()))
             ])));
   }
+
+  addtocart({required Item catalog}) {}
 }
