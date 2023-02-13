@@ -1,12 +1,20 @@
 import 'package:flutter_catalog/models/catalog.dart';
 
 class CartModel {
+<<<<<<< Updated upstream
   static final cartModel = CartModel._internal();
   CartModel._internal();
 
   factory CartModel() => cartModel;
 
   CatalogModel _catalog;
+=======
+  static final cartmodel = CartModel._internal();
+  CartModel._internal();
+  factory CartModel() => cartmodel;
+  // catalog field
+  late CatalogModel _catalog;
+>>>>>>> Stashed changes
 
   final List<int> _itemIds = [];
 

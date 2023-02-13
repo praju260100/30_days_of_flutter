@@ -61,6 +61,12 @@ class _CartList extends StatefulWidget {
 
 class __CartListState extends State<_CartList> {
   final _cart = CartModel();
+class _CartList extends StatefulWidget {
+  @override
+  State<_CartList> createState() => _CartListState();
+}
+
+class _CartListState extends State<_CartList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

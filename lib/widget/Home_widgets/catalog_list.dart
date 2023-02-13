@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/cart.dart';
+import 'package:flutter_catalog/widget/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/pages/home_detail_page.dart';
 import 'package:flutter_catalog/widget/Home_widgets/catalog_image.dart';
-import 'package:flutter_catalog/widget/themes.dart';
 
 class CatalogList extends StatelessWidget {
   @override
@@ -58,7 +58,9 @@ class CatalogItem extends StatelessWidget {
                 buttonPadding: EdgeInsets.zero,
                 children: [
                   "\$${catalog.price}".text.bold.xl.make(),
-                  addtocart(catalog: catalog)
+                  addtocart(
+                    catalog: catalog,
+                  )
                 ],
               ).pOnly(right: 8.0)
             ],
@@ -90,7 +92,7 @@ class _addtocartState extends State<addtocart> {
         final _catalog = CatalogModel();
         final _cart = CartModel();
         _cart.catalog = _catalog;
-        _cart.add(widget.catalog);
+        // _cart.add(widget.catalog);
         setState(() {});
       },
       style: ButtonStyle(
