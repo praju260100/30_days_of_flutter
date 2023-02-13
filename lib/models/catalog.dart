@@ -6,7 +6,6 @@ class CatalogModel {
   CatalogModel._internal();
 
   factory CatalogModel() => catModel;
-  late CatalogModel _catalog;
 
   static List<Item> items = [];
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/widget/Home_widgets/add_to_cart.dart';
+import 'package:flutter_catalog/widget/Home_widgets/catalog_list.dart';
 import 'package:flutter_catalog/widget/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -25,7 +26,7 @@ class homedetailpage extends StatelessWidget {
             buttonPadding: EdgeInsets.zero,
             children: [
               "\$${catalog.price}".text.bold.xl4.red800.make(),
-              AddToCart(
+              addtocart(
                 catalog: catalog,
               ).wh(150, 50)
             ],

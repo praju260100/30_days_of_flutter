@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:flutter_catalog/widget/themes.dart';
 
 class CatalogHeader extends StatelessWidget {
   @override
